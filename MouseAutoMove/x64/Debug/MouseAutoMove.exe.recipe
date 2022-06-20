@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\CppSelfWorkspace\Win32MouseMoving\x64\Debug\MouseAutoMove.exe</FullPath>
+      <FullPath>D:\CppSelfWorkspace\Win32MouseMove\x64\Debug\MouseAutoMove.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,5 +1,7 @@
 #pragma once
 #include <windows.h>
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-void RegisterWindow();
+//void RegisterWindow();
+
+const wchar_t kClassName[] = L"Sample Window Class";	
+const wchar_t kWindowName[] = L"";
