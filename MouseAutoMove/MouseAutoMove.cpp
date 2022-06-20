@@ -2,11 +2,11 @@
 
 #include "utilities.h"
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-    switch (uMsg)
+    switch (msg)
     {
     case WM_DESTROY:
         PostQuitMessage(0);
@@ -22,30 +22,38 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         EndPaint(hwnd, &ps);
     }
     return 0;
+
+    case WM_TIMER:
+    {
+        POINT pt;
+        RECT rc;
+        GetWindowRect(hwnd, &rc);
+        GetCursorPos(&pt);
+
+        if (pt.x == rc.left && pt.y == rc.top) 
+        {
+            SetCursorPos(rc.right, rc.bottom);
+        }
+        else 
+        {
+            SetCursorPos(rc.left, rc.top);
+        }
+        
+    }
+    return 0;
     }
 
-    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+    return DefWindowProc(hwnd, msg, wparam, lparam);
 }
 
-int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ PWSTR pCmdLine, _In_ int nCmdShow)
+int WINAPI wWinMain(_In_ HINSTANCE hinstance, _In_opt_ HINSTANCE, _In_ PWSTR p_cmd_line, _In_ int n_cmd_show)
 {
-
-    // Register the window class.
-    //const wchar_t CLASS_NAME[] = L"Sample Window Class";
-
-    WNDCLASS wc = { };
-    wc.lpfnWndProc = WindowProc;
-    wc.hInstance = hInstance;
-    wc.lpszClassName = kWindowName;
-
-    RegisterClass(&wc);
-
-    // Create the window.
+    RegisterWindow(hinstance, WindowProc);
 
     HWND hwnd = CreateWindowEx(
         0,                              // Optional window styles.
-        CLASS_NAME,                     // Window class
-        L"MouseAutoMove",    // Window text
+        kClassName,                     // Window class
+        kWindowName,                    // Window text
         WS_OVERLAPPEDWINDOW,            // Window style
 
         // Size and position
@@ -53,7 +61,7 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ PWSTR pCm
 
         NULL,       // Parent window    
         NULL,       // Menu
-        hInstance,  // Instance handle
+        hinstance,  // Instance handle
         NULL        // Additional application data
     );
 
@@ -62,7 +70,11 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ PWSTR pCm
         return 0;
     }
 
-    ShowWindow(hwnd, nCmdShow);
+
+    SetTimer(hwnd, ID_TIMER, 5000, 0);
+
+
+    ShowWindow(hwnd, n_cmd_show);
 
     // Run the message loop.
     MSG msg = { };
