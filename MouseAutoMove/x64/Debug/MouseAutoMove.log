@@ -1,2 +1,7 @@
 ﻿  MouseAutoMove.cpp
-  MouseAutoMove.vcxproj -> D:\CppSelfWorkspace\Win32MouseMove\x64\Debug\MouseAutoMove.exe
+D:\WorkSpace\Cpp_VS_ws\MouseAutoMove\MouseAutoMove\MouseAutoMove.cpp(22,108): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\WorkSpace\Cpp_VS_ws\MouseAutoMove\MouseAutoMove\MouseAutoMove.cpp(50,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\WorkSpace\Cpp_VS_ws\MouseAutoMove\MouseAutoMove\MouseAutoMove.cpp(51,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\WorkSpace\Cpp_VS_ws\MouseAutoMove\MouseAutoMove\MouseAutoMove.cpp(83,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\WorkSpace\Cpp_VS_ws\MouseAutoMove\MouseAutoMove\MouseAutoMove.cpp(84,21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  MouseAutoMove.vcxproj -> D:\WorkSpace\Cpp_VS_ws\MouseAutoMove\x64\Debug\MouseAutoMove.exe
